@@ -17,9 +17,17 @@ The password hash is configured in the ignored `.env.local` file as `PYPATH_PASS
 
 Each topic completes when every concept and all three milestones are checked. Revision is manually added and manually marked reviewed. No scheduled reminders or AI APIs are connected.
 
-## Before deployment
+## Cloudflare deployment
 
-This local version uses a Node filesystem store and binds to loopback. Choose hosting before deployment and migrate storage/authentication configuration appropriately; it is not currently a Cloudflare Worker build. No cloud resources have been created. The Vite configuration intentionally runs the server in Node for local persistence.
+PyPath deploys as a Cloudflare Worker. Checklist progress and revision data live in the `pypath-progress` D1 database; the roadmap and curated notes remain in this repository.
+
+1. Create a D1 database named `pypath-progress` and copy its database ID into `wrangler.jsonc`.
+2. Apply `migrations/0001_pypath_state.sql` with `wrangler d1 migrations apply pypath-progress --remote`.
+3. Add `PYPATH_PASSWORD_HASH` and a long random `PYPATH_SESSION_SECRET` with `wrangler secret put`.
+4. Run `npm run cf:deploy` to deploy the Worker.
+5. In Cloudflare, attach your domain from the Worker's **Settings → Domains & Routes** screen.
+
+Do not commit `.env.local`, D1 database IDs belonging to another account, passwords, password hashes, or session secrets.
 
 ## Verification
 

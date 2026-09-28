@@ -9,6 +9,9 @@
     "install:ci": "node scripts/install-ci.mjs",
     "dev": "node scripts/run-framework.mjs dev",
     "build": "node scripts/run-framework.mjs build",
+    "cf:dev": "vite dev",
+    "cf:deploy": "npx @vinext/cloudflare deploy",
+    "cf:types": "wrangler types",
     "start": "node --env-file=.env.local node_modules/vinext/dist/cli.js start --hostname 127.0.0.1",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate"
