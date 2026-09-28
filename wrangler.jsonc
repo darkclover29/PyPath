@@ -9,7 +9,7 @@
     {
       "binding": "DB",
       "database_name": "pypath-progress",
-      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "database_id": "e5f2176a-1cb3-4a80-b654-8dad69710413",
       "migrations_dir": "migrations"
     }
   ]
