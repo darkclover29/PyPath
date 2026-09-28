@@ -5,6 +5,9 @@
   "compatibility_flags": ["nodejs_compat"],
   "main": "vinext/server/app-router-entry",
   "assets": { "not_found_handling": "none" },
+  "routes": [
+    { "pattern": "pypath.harshtiwari.dev", "custom_domain": true }
+  ],
   "d1_databases": [
     {
       "binding": "DB",
